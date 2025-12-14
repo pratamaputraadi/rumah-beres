@@ -1,0 +1,25 @@
+# render.yaml
+
+# Konfigurasi Build dan Deployment
+previewsEnabled: true
+
+services:
+  - type: web
+    name: rumah-beres-app
+    # Build Command: Pasang semua dependensi
+    buildCommand: "composer install --no-dev"
+    # Start Command: Jalankan PHP Server di folder public
+    startCommand: "php-cgi -S 0.0.0.0:$PORT -t public"
+    plan: free # Menggunakan paket gratis
+
+    env: php # Lingkungan PHP
+
+    envVars:
+      - key: APP_KEY
+        generateValue: true # Render akan membuat kunci unik
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: PORT
+        value: "8000"
