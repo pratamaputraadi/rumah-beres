@@ -98,9 +98,14 @@
     </section>
 
     <footer class="max-w-7xl mx-auto px-8 pb-16 text-center">
-        <div class="border border-white/20 rounded-full py-4 px-8 inline-block hover:bg-white/5 transition cursor-pointer">
+
+        {{-- BLOK DIUBAH DARI <div> MENJADI <a> UNTUK MEMICU DOWNLOAD --}}
+        <a href="{{ asset('app-release.apk') }}"
+            download="Rumah-Beres-App.apk"
+            class="border border-white/20 rounded-full py-4 px-8 inline-block hover:bg-white/5 transition cursor-pointer text-decoration-none">
             <p class="font-bold">Download The <span class="text-white">Rumah Beres</span> <br> <span class="text-gray-400 font-normal">Official App Only On Store</span></p>
-        </div>
+        </a>
+
         <div class="mt-12 text-gray-600 text-sm">
             &copy; 2025 Rumah Beres. All rights reserved.
         </div>

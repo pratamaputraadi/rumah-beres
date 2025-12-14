@@ -46,14 +46,6 @@
             </button>
         </form>
 
-        <div class="mt-4 text-center text-xs text-gray-500">
-            <p>Demo Accounts:</p>
-            <p>Admin: admin@rumahberes.com</p>
-            <p>Customer: adi@email.com</p>
-            <p>Technician: tech@email.com</p>
-            <p>Password: password</p>
-        </div>
-
         <div class="mt-6 text-center text-sm text-gray-400">
             Don't Have an Account?
             <a href="{{ route('register.choice') }}" class="text-white font-bold hover:underline">
