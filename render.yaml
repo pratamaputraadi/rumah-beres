@@ -6,20 +6,44 @@ previewsEnabled: true
 services:
   - type: web
     name: rumah-beres-app
-    # Build Command: Pasang semua dependensi
+    # Lingkungan yang digunakan (PHP)
+    env: php
+
+    # Perintah yang dijalankan Render saat pertama kali membangun proyek (menginstal Composer)
     buildCommand: "composer install --no-dev"
-    # Start Command: Jalankan PHP Server di folder public
+
+    # Perintah yang dijalankan Render untuk menjalankan aplikasi web (menggunakan PHP built-in server)
     startCommand: "php-cgi -S 0.0.0.0:$PORT -t public"
-    plan: free # Menggunakan paket gratis
 
-    env: php # Lingkungan PHP
+    # Menggunakan paket gratis
+    plan: free
 
+    # Variabel Lingkungan
     envVars:
+      # Kunci aplikasi yang penting untuk keamanan Laravel
       - key: APP_KEY
-        generateValue: true # Render akan membuat kunci unik
+        generateValue: true
+
+      # Mengatur lingkungan ke produksi
       - key: APP_ENV
         value: production
+
+      # Debug dinonaktifkan di produksi
       - key: APP_DEBUG
         value: false
+
+      # Port yang digunakan (Render akan mengisi nilai PORT ini secara dinamis)
       - key: PORT
         value: "8000"
+
+      # Variabel Database (Akan diisi dengan detail dari Render PostgreSQL di langkah berikutnya)
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        value: "localhost" # Nilai ini akan di-override di Dashboard Render
+      - key: DB_DATABASE
+        value: "database_name" # Nilai ini akan di-override di Dashboard Render
+      - key: DB_USERNAME
+        value: "username" # Nilai ini akan di-override di Dashboard Render
+      - key: DB_PASSWORD
+        value: "password" # Nilai ini akan di-override di Dashboard Render
